@@ -1,0 +1,26 @@
+{
+  "local": {
+    "app": {
+      "name": "dynamodb-mapper-ts"
+    },
+    "aws": {
+      "region": "ap-south-1",
+      "credentials": {
+        "key": "ACCESS_KEY_ID",
+        "secret": "SECRET_ACCESS_KEY"
+      }
+    }
+  },
+  "dev": {
+    "app": {
+      "name": "dynamodb-mapper-ts"
+    },
+    "aws": {
+      "region": "ap-south-1",
+      "credentials": {
+        "key": "ACCESS_KEY_ID",
+        "secret": "SECRET_ACCESS_KEY"
+      }
+    }
+  }
+}
