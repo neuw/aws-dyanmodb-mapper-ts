@@ -1,9 +1,6 @@
 import {awsClientsConfigurator} from "../../config/AwsCredConfigurer";
 import {DataMapper} from "@aws/dynamodb-data-mapper";
 import {User} from "../tables/User";
-import {Role} from "../models/Role";
-import {Metadata} from "../models/Metadata";
-import {Address} from "../models/Address";
 
 export class UserMapper {
 
@@ -27,10 +24,26 @@ export class UserMapper {
 
     public async createUser(user:User) {
         return await this.mapper.put(user).then(r => {
-            console.log("========== ENTRY DONE TO THE USER TABLE ==========");
+            console.log("========== ITEM ENTRY DONE TO THE USER TABLE ==========");
             return r;
         }).catch(e => {
-            console.error("======= ENTRY to the USER TABLE NOT SUCCESSFUL =======");
+            console.error("======= ITEM ENTRY to the USER TABLE NOT SUCCESSFUL =======");
+            console.error(e);
+        })
+    }
+
+    public async getUser(id:string) {
+        let user:User = new User();
+        user.id = id;
+        return await this.mapper.get(user).then(r => {
+            console.log("========== ITEM ENTRY FETCHED FROM THE USER TABLE ==========");
+            return r;
+        }).catch(e => {
+            console.error("========== ITEM FETCH ISSUE ===========");
+            console.debug(e);
+            if (e.name === "ItemNotFoundException") {
+                throw new Error('Item not found in user table with id -> '+id);
+            }
         })
     }
 

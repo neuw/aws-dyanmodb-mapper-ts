@@ -4,10 +4,27 @@ import {Role} from "./db/models/Role";
 import {Address} from "./db/models/Address";
 import {Metadata} from "./db/models/Metadata";
 import * as faker from 'faker';
+import yargs from "yargs";
+import {hideBin} from "yargs/helpers";
 
 class Runner {
 
     public testUserMapper() {
+        const argv = yargs(hideBin(process.argv)).string('userId').argv;
+
+        if (argv.userId) {
+            console.log("userId is -> "+argv.userId);
+            const userId:string = argv.userId;
+            userMapper.getUser(userId).then(r => {
+                console.log("======= USER FOUND AND DETAILS ARE =======");
+                console.log(JSON.stringify(r));
+                console.log("======= USER FOUND AND DETAILS ARE =======");
+            }).catch(e => {
+                console.error("======= USER FETCH NOT SUCCESSFUL =======");
+            })
+            return;
+        }
+
         const user: User = new User();
 
         const role: Role = new Role();
