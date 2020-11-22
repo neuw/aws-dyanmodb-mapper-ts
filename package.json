@@ -4,23 +4,32 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ts:testUserMapper": "ts-node playground/Runner",
+    "ts:testUserMapper:create": "ts-node playground/Runner",
+    "ts:testUserMapper:get": "ts-node playground/Runner --userId=ecfffeda-d16b-4c88-be5a-c97d2491f245",
     "build": "tsc",
-    "js:testUserMapper": "node build/playground/Runner"
+    "js:testUserMapper": "node build/playground/Runner",
+    "js:testUserMapper": "node build/playground/Runner --userId=ecfffeda-d16b-4c88-be5a-c97d2491f245"
   },
-  "keywords": ["AWS", "DynamoDB", "Mapper", "Typescript"],
+  "keywords": [
+    "AWS",
+    "DynamoDB",
+    "Mapper",
+    "Typescript"
+  ],
   "author": "krnbr@live.in",
   "dependencies": {
     "@aws/dynamodb-data-mapper": "^0.7.3",
     "@aws/dynamodb-data-mapper-annotations": "^0.7.3",
     "aws-sdk": "^2.794.0",
     "faker": "^5.1.0",
-    "uuid": "^8.3.1"
+    "uuid": "^8.3.1",
+    "yargs": "^16.1.1"
   },
   "devDependencies": {
     "@types/faker": "^5.1.4",
     "@types/node": "^14.14.8",
     "@types/uuid": "^8.3.0",
+    "@types/yargs": "^15.0.10",
     "ts-node": "^9.0.0",
     "tslint": "^6.1.3",
     "typescript": "^4.0.5"
