@@ -1,4 +1,4 @@
-# aws-dynamodb-mapper-ts is a boilerplate code for integrating the AWS DynamoDB using the mapper library that Awslabs provide
+# aws-dynamodb-mapper-ts is a boilerplate code for integrating the AWS DynamoDB using the [mapper library](https://github.com/awslabs/dynamodb-data-mapper-js) that Awslabs provide
 
 The code structure is mainly as below:-
 
@@ -7,7 +7,7 @@ The code structure is mainly as below:-
 │   ├── config - contains the configuration related classes
 │   │   ├── app.config.json - the json file contains the variables like AWS key and secret 
 │   │   ├── AppConfigManager.ts - variables config manager
-│   │   └── AwsClientsManager.ts - manage AWS clients from single point, intention is common point for all clients
+│   │   └── AwsClientsManager.ts - manage AWS clients from single point, common point for all clients
 │   ├── db
 │   │   ├── mappers - Contains Mapper classes for managing the user table related actions
 │   │   │   └── UserMapper.ts - The Mapper class for User table
