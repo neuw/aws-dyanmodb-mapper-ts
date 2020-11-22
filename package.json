@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "ts:testUserMapper:createTable": "ts-node playground/Runner --create-table",
     "ts:testUserMapper:create": "ts-node playground/Runner",
     "ts:testUserMapper:get": "ts-node playground/Runner --userId=ecfffeda-d16b-4c88-be5a-c97d2491f245",
-    "build": "tsc",
+    "transpile": "tsc",
+    "js:testUserMapper:createTable": "node playground/Runner --create-table",
     "js:testUserMapper:create": "node build/playground/Runner",
     "js:testUserMapper:get": "node build/playground/Runner --userId=ecfffeda-d16b-4c88-be5a-c97d2491f245",
     "tree": "tree --dirs-first --exclude \"node_modules|build\""

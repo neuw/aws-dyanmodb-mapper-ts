@@ -10,7 +10,14 @@ import {hideBin} from "yargs/helpers";
 class Runner {
 
     public testUserMapper() {
-        const argv = yargs(hideBin(process.argv)).string('userId').argv;
+        const argv = yargs(hideBin(process.argv)).string('userId').boolean('create-table').argv;
+
+        if (argv["create-table"]) {
+            userMapper.createTableIfNotExists().then(() => {
+                console.log("TABLE CREATED SUCCESSFULLY!");
+            });
+            return;
+        }
 
         if (argv.userId) {
             console.log("userId is -> "+argv.userId);

@@ -22,6 +22,19 @@ export class UserMapper {
         })();
     }
 
+    public async createTableIfNotExists() {
+        return await this.mapper.ensureTableExists(User, {
+            readCapacityUnits: 1,
+            writeCapacityUnits: 1
+        }).then(() => {
+            console.log("TABLE USER CREATED SUCCESSFULLY!");
+        }).catch(e => {
+            console.log("ISSUE WHILE CREATING THE USER TABLE!!");
+            console.error(e);
+            throw new Error("ISSUE WHILE CREATING THE USER TABLE!!");
+        })
+    }
+
     public async createUser(user:User) {
         return await this.mapper.put(user).then(r => {
             console.log("========== ITEM ENTRY DONE TO THE USER TABLE ==========");
