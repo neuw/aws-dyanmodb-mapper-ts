@@ -1,4 +1,4 @@
-import {awsClientsConfigurator} from "../../config/AwsCredConfigurer";
+import {awsClientsManager} from "../../config/AwsClientsManager";
 import {DataMapper} from "@aws/dynamodb-data-mapper";
 import {User} from "../tables/User";
 
@@ -7,7 +7,7 @@ export class UserMapper {
     mapper: DataMapper;
 
     constructor() {
-        this.mapper = awsClientsConfigurator.getDataMapper();
+        this.mapper = awsClientsManager.getDataMapper();
         this.checkIfTableExists();
         console.log("UserMapper Initialized!!")
     }

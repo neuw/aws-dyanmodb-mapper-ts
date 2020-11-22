@@ -26,7 +26,7 @@ export interface Aws {
 
 export class AppConfigImpl implements AppConfig {
 
-    public appEnv: string = "dev";
+    public appEnv: string = "local";
     public appName: string;
     public app: App;
     public aws: Aws;
@@ -49,23 +49,10 @@ export class AppConfigImpl implements AppConfig {
             version: packageDetails.version
         }
         this.aws = this.resolveAwsConfig(this.appEnv);
-        //console.log('-----------'+JSON.stringify(this.aws))
         console.log("LOADED THE APP CONFIG!!!");
     }
 
     resolveAwsConfig(env: string) {
-
-        /*const env: string = process.env.APP_ENV ? process.env.APP_ENV : 'local';
-
-        const d = data[env].aws;
-
-        return {
-            region: d.region,
-            credentials: {
-                key: d.credentials.key,
-                secret: d.credentials.secret
-            }
-        }*/
 
         const d = data[env].aws;
 

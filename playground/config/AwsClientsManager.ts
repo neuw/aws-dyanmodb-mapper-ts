@@ -5,7 +5,7 @@ import * as AWS from 'aws-sdk';
 import {appConfig} from './AppConfigManager';
 import {DataMapper} from "@aws/dynamodb-data-mapper";
 
-class AwsClientsConfigurator {
+class AwsClientsManager {
 
     private readonly awsConfig:GlobalConfigInstance;
     private readonly dynamoDb:DynamoDB;
@@ -53,5 +53,5 @@ class AwsClientsConfigurator {
 
 }
 
-const awsClientsConfigurator:AwsClientsConfigurator = new AwsClientsConfigurator();
-export {awsClientsConfigurator};
+const awsClientsManager:AwsClientsManager = new AwsClientsManager();
+export {awsClientsManager};
