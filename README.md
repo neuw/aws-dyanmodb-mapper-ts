@@ -2,6 +2,7 @@
 
 The code structure is mainly as below:-
 
+```
 dynamodb-mapper-ts
 ├── playground
 │   ├── config
@@ -22,3 +23,5 @@ dynamodb-mapper-ts
 ├── package.json
 ├── tsconfig.json
 └── tslint.json
+
+```
