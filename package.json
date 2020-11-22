@@ -5,12 +5,16 @@
   "main": "index.js",
   "scripts": {
     "ts:testUserMapper:createTable": "ts-node playground/Runner --create-table",
-    "ts:testUserMapper:create": "ts-node playground/Runner",
-    "ts:testUserMapper:get": "ts-node playground/Runner --userId=ecfffeda-d16b-4c88-be5a-c97d2491f245",
+    "ts:testUserMapper:createAndSave": "ts-node playground/Runner --create",
+    "ts:testUserMapper:get": "ts-node playground/Runner --get --user-id=4fcef040-fbc7-4aa6-9d66-6b4028b117ca",
+    "ts:testUserMapper:delete": "ts-node playground/Runner --delete --user-id=4fcef040-fbc7-4aa6-9d66-6b4028b117ca",
+    "ts:testUserMapper:update": "ts-node playground/Runner --update --user-id=4fcef040-fbc7-4aa6-9d66-6b4028b117ca",
     "transpile": "tsc",
-    "js:testUserMapper:createTable": "node playground/Runner --create-table",
-    "js:testUserMapper:create": "node build/playground/Runner",
-    "js:testUserMapper:get": "node build/playground/Runner --userId=ecfffeda-d16b-4c88-be5a-c97d2491f245",
+    "js:testUserMapper:createTable": "node build/playground/Runner --create-table",
+    "js:testUserMapper:createAndSave": "node build/playground/Runner --create",
+    "js:testUserMapper:get": "node build/playground/Runner --get --user-id=4fcef040-fbc7-4aa6-9d66-6b4028b117ca",
+    "js:testUserMapper:delete": "node build/playground/Runner --delete --user-id=4fcef040-fbc7-4aa6-9d66-6b4028b117ca",
+    "js:testUserMapper:update": "node build/playground/Runner --update --user-id=4fcef040-fbc7-4aa6-9d66-6b4028b117ca",
     "tree": "tree --dirs-first --exclude \"node_modules|build\""
   },
   "keywords": [

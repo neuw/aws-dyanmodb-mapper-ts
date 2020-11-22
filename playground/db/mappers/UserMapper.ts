@@ -1,6 +1,7 @@
 import {awsClientsManager} from "../../config/AwsClientsManager";
 import {DataMapper} from "@aws/dynamodb-data-mapper";
 import {User} from "../tables/User";
+import * as faker from 'faker';
 
 export class UserMapper {
 
@@ -58,6 +59,51 @@ export class UserMapper {
                 throw new Error('Item not found in user table with id -> '+id);
             }
         })
+    }
+
+    public async deleteUser(id:string) {
+        let user:User = new User();
+        user.id = id;
+        return await this.mapper.delete(user).then(r => {
+            console.log("========== ITEM ENTRY DELETED FROM THE USER TABLE ==========");
+            return r;
+        }).catch(e => {
+            console.error("========== ITEM DELETION ISSUE ===========");
+            console.debug(e);
+        })
+    }
+
+    public async updateUser(id:string) {
+        let user:User = new User();
+        user.id = id;
+        let fetchedUser:void|User = await this.mapper.get(user).then(r => {
+            console.log("========== ITEM ENTRY FETCHED FROM THE USER TABLE ==========");
+            console.log("==== PREVIOUS STATE OF THE USER IS ====");
+            console.log(JSON.stringify(r));
+            console.log("==== PREVIOUS STATE OF THE USER IS ====");
+            return r;
+        }).catch(e => {
+            console.error("========== ITEM DELETION ISSUE ===========");
+            console.debug(e);
+            if (e.name === "ItemNotFoundException") {
+                throw new Error('Item not found in user table with id -> '+id);
+            }
+        });
+
+        if (typeof fetchedUser === 'object' && fetchedUser.hasOwnProperty('id')) {
+            fetchedUser.email = faker.internet.email();
+            return this.mapper.update(fetchedUser).then(r => {
+                console.log("USER UPDATE SUCCESSFUL!");
+                //console.debug(JSON.stringify(r));
+                return r;
+            }).catch(e => {
+                console.error("UNABLE TO UPDATE THE USER");
+                console.debug(e);
+                throw new Error('Error while updating the USER');
+            })
+        } else {
+            throw new Error("Error while updating the USER with id - "+id);
+        }
     }
 
 }

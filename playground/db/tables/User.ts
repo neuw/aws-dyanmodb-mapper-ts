@@ -13,6 +13,7 @@ export class User {
     })
     id: string;
 
+    @attribute()
     email: string;
 
     @attribute()
